@@ -6,6 +6,7 @@ import { OtherDashboardComponent } from './other-dashboard.component';
 import { PackagesShippedComponent } from './packages-shipped/packages-shipped.component';
 import { PackagesReturnedComponent } from './packages-returned/packages-returned.component';
 import { PackagesRushedComponent } from './packages-rushed/packages-rushed.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,6 @@ import { PackagesRushedComponent } from './packages-rushed/packages-rushed.compo
     PackagesReturnedComponent,
     PackagesRushedComponent,
   ],
-  imports: [CommonModule, OtherDashboardRoutingModule],
+  imports: [CommonModule, SharedModule, OtherDashboardRoutingModule],
 })
 export class OtherDashboardModule {}
