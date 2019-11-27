@@ -16,7 +16,7 @@ export class PackagesReturnedComponent implements OnInit {
           label: 'Packages Rushed',
           data,
           fill: true,
-          borderColor: ChartColors.Orange,
+          borderColor: ChartColors.Blue,
         },
       ],
     }))
