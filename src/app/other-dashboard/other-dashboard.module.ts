@@ -7,6 +7,7 @@ import { PackagesShippedComponent } from './packages-shipped/packages-shipped.co
 import { PackagesReturnedComponent } from './packages-returned/packages-returned.component';
 import { PackagesRushedComponent } from './packages-rushed/packages-rushed.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [

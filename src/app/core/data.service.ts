@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+export const enum ChartColors {
+  Green = '#78CC9B',
+  Blue = '#7897CC',
+  Teal = '#4bc0c0',
+  Orange = '#FF9370',
+}
 
 @Injectable({
   providedIn: 'root',
@@ -7,16 +15,19 @@ import { of } from 'rxjs';
 export class DataService {
   constructor() {}
 
-  dates = ['2019/01', '2019/02', '2019/03'];
+  labels = ['2017', '2018', '2019'];
+  randomNumber = () => Math.random() * (3500 - 1000) + 1000;
+  dataLabels = data => of({ labels: this.labels, data }).pipe(delay(this.randomNumber()));
 
   get packagesReturned$() {
-    const values = [1000, 3000, 2000];
+    return this.dataLabels([1000, 2000, 4500]);
+  }
 
-    return of(
-      this.dates.map((d, i) => ({
-        name: d,
-        value: values[i],
-      }))
-    );
+  get packagesRushed$() {
+    return this.dataLabels([450, 650, 1400]);
+  }
+
+  get packagesShipped$() {
+    return this.dataLabels([16000, 24500, 51000]);
   }
 }
