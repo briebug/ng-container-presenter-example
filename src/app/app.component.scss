@@ -8,6 +8,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.links {
+  a {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+}
+
+.active-link {
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
@@ -153,12 +164,6 @@ a:hover {
 
 a:hover {
   color: #b8d7f6;
-}
-
-.links {
-  a {
-    margin-left: 10px;
-  }
 }
 
 .terminal {
