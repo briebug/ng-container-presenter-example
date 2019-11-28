@@ -21,32 +21,19 @@ export class DashboardComponent implements OnInit {
   );
 
   all$: Observable<LineGraphData> = combineLatest([
-    this.packageService.shipped$.pipe(this.mapAllChartData('Shipped', ChartColors.Teal)),
-    this.packageService.returned$.pipe(this.mapAllChartData('Returned', ChartColors.Blue)),
-    this.packageService.rushed$.pipe(this.mapAllChartData('Rushed', ChartColors.Orange)),
+    this.packagesShipped$,
+    this.packagesReturned$,
+    this.packagesRushed$,
   ]).pipe(
     map(
-      (dataPoints): LineGraphData => ({
-        labels: dataPoints[0].labels,
-        datasets: dataPoints.map(d => ({
-          label: d.label,
-          data: d.data,
-          fill: true,
-          borderColor: d.borderColor,
-        })),
+      (lineGraphs): LineGraphData => ({
+        labels: lineGraphs[0].labels,
+        datasets: lineGraphs.reduce((acc, x) => acc.concat(x.datasets), []),
       })
     )
   );
 
   constructor(private packageService: PackageService) {}
-
-  private mapAllChartData<T>(label: string, borderColor = ChartColors.Teal) {
-    return map((data: T): T & { label: string; borderColor: string } => ({
-      ...data,
-      label,
-      borderColor,
-    }));
-  }
 
   mapLineChart(label: string, borderColor = ChartColors.Blue) {
     return map(({ data, labels }) => ({
