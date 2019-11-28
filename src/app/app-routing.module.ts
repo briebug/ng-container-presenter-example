@@ -12,6 +12,11 @@ const routes: Routes = [
       import('./other-dashboard/other-dashboard.module').then(m => m.OtherDashboardModule),
   },
   {
+    path: 'package-history',
+    loadChildren: () =>
+      import('./package-history/package-history.module').then(m => m.PackageHistoryModule),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

@@ -11,13 +11,13 @@ import { LineGraphData } from '../shared/line-graph/line-graph.component';
 })
 export class DashboardComponent implements OnInit {
   packagesShipped$: Observable<LineGraphData> = this.packageService.shipped$.pipe(
-    this.mapLineChart('Shipped', ChartColors.Teal)
+    this.packageService.mapLineChart('Shipped', ChartColors.Teal)
   );
   packagesReturned$: Observable<LineGraphData> = this.packageService.returned$.pipe(
-    this.mapLineChart('Returned', ChartColors.Blue)
+    this.packageService.mapLineChart('Returned', ChartColors.Blue)
   );
   packagesRushed$: Observable<LineGraphData> = this.packageService.rushed$.pipe(
-    this.mapLineChart('Rushed', ChartColors.Orange)
+    this.packageService.mapLineChart('Rushed', ChartColors.Orange)
   );
 
   all$: Observable<LineGraphData> = combineLatest([
@@ -34,20 +34,6 @@ export class DashboardComponent implements OnInit {
   );
 
   constructor(private packageService: PackageService) {}
-
-  mapLineChart(label: string, borderColor = ChartColors.Blue) {
-    return map(({ data, labels }) => ({
-      labels,
-      datasets: [
-        {
-          label,
-          data,
-          fill: true,
-          borderColor,
-        },
-      ],
-    }));
-  }
 
   ngOnInit() {}
 }
