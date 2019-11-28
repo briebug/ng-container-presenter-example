@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { ChartColors, DataService } from 'src/app/core/data.service';
+import { ChartColors, PackageService } from 'src/app/core/data.service';
 
 @Component({
   selector: 'app-packages-returned',
@@ -8,7 +8,7 @@ import { ChartColors, DataService } from 'src/app/core/data.service';
   styleUrls: ['./packages-returned.component.scss'],
 })
 export class PackagesReturnedComponent implements OnInit {
-  data = this.dataService.packagesReturned$.pipe(
+  data = this.dataService.returned$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [
@@ -22,7 +22,7 @@ export class PackagesReturnedComponent implements OnInit {
     }))
   );
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: PackageService) {}
 
   ngOnInit() {}
 }

@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+export interface LineGraphData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    fill: boolean;
+    borderColor: string;
+  }[];
+}
 
 @Component({
   selector: 'app-line-graph',
@@ -6,6 +16,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./line-graph.component.scss'],
 })
 export class LineGraphComponent implements OnInit {
+  @Input() title: string;
+  @Input() data: LineGraphData;
+
   constructor() {}
 
   ngOnInit() {}
