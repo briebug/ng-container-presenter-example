@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PackageService, ChartColors } from 'src/app/core/data.service';
+import { PackageService, ChartColors } from 'src/app/core/package.service';
 import { map } from 'rxjs/operators';
 
 @Component({

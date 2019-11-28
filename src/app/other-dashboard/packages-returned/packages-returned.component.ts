@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { ChartColors, PackageService } from 'src/app/core/data.service';
+import { ChartColors, PackageService } from 'src/app/core/package.service';
 
 @Component({
   selector: 'app-packages-returned',

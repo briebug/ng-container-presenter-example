@@ -1,4 +1,5 @@
 <h1>Dashboard</h1>
+<app-line-graph title="All" [data]="all$ | async"></app-line-graph>
 <app-line-graph title="Packages Shipped" [data]="packagesShipped$ | async"></app-line-graph>
-<app-line-graph title="Packages Rushed" [data]="packagesRushed$ | async"></app-line-graph>
 <app-line-graph title="Packages Returned" [data]="packagesReturned$ | async"></app-line-graph>
+<app-line-graph title="Packages Rushed" [data]="packagesRushed$ | async"></app-line-graph>
