@@ -1,2 +1,10 @@
-<h1>Package History ({{ title$ | async }})</h1>
-<app-line-graph [title]="title$ | async" [data]="data$ | async"></app-line-graph>
+<ng-container *ngIf="data$ | async as data; else loading">
+  <h1>Package History ({{ title$ | async }})</h1>
+  <app-line-graph [title]="title$ | async" [data]="data"></app-line-graph>
+</ng-container>
+
+<ng-template #loading>
+  <div class="container">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</ng-template>

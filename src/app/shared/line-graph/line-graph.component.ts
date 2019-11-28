@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 export interface LineGraphData {
   labels: string[];
@@ -16,8 +16,10 @@ export interface LineGraphData {
   styleUrls: ['./line-graph.component.scss'],
 })
 export class LineGraphComponent implements OnInit {
+  @Input() externalLink: string;
   @Input() title: string;
   @Input() data: LineGraphData;
+  @Output() titleClick = new EventEmitter<string>();
 
   constructor() {}
 

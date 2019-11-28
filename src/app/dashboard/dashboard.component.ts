@@ -3,6 +3,7 @@ import { PackageService, ChartColors } from '../core/package.service';
 import { map } from 'rxjs/operators';
 import { Observable, combineLatest } from 'rxjs';
 import { LineGraphData } from '../shared/line-graph/line-graph.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +34,11 @@ export class DashboardComponent implements OnInit {
     )
   );
 
-  constructor(private packageService: PackageService) {}
+  constructor(private packageService: PackageService, private router: Router) {}
 
   ngOnInit() {}
+
+  titleClicked(type: string) {
+    this.router.navigate(['package-history'], { queryParams: { line: type } });
+  }
 }

@@ -1,7 +1,22 @@
 <h1>Dashboard</h1>
 <div class="charts">
   <app-line-graph title="All" [data]="all$ | async"></app-line-graph>
-  <app-line-graph title="Packages Shipped" [data]="packagesShipped$ | async"></app-line-graph>
-  <app-line-graph title="Packages Returned" [data]="packagesReturned$ | async"></app-line-graph>
-  <app-line-graph title="Packages Rushed" [data]="packagesRushed$ | async"></app-line-graph>
+  <app-line-graph
+    title="Packages Shipped"
+    externalLink="shipped"
+    (titleClick)="titleClicked($event)"
+    [data]="packagesShipped$ | async"
+  ></app-line-graph>
+  <app-line-graph
+    title="Packages Returned"
+    externalLink="returned"
+    (titleClick)="titleClicked($event)"
+    [data]="packagesReturned$ | async"
+  ></app-line-graph>
+  <app-line-graph
+    title="Packages Rushed"
+    externalLink="rushed"
+    (titleClick)="titleClicked($event)"
+    [data]="packagesRushed$ | async"
+  ></app-line-graph>
 </div>

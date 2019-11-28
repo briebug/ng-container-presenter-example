@@ -1,2 +1,10 @@
-<h2>{{ title }}</h2>
+<div class="header">
+  <h2>{{ title }}</h2>
+  <i
+    *ngIf="externalLink"
+    (click)="titleClick.emit(externalLink)"
+    class="pi pi-external-link"
+    style="font-size: 2em"
+  ></i>
+</div>
 <p-chart type="line" [data]="data"></p-chart>

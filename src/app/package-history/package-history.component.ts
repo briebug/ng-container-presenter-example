@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PackageService } from '../core/package.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, map, filter } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-package-history',
@@ -12,15 +13,23 @@ export class PackageHistoryComponent implements OnInit {
   title$ = this.route.queryParamMap.pipe(map(queryParamMap => queryParamMap.get('line')));
 
   data$ = this.route.queryParamMap.pipe(
-    filter(queryParamMap => this.packageService.allowedHistoryType(queryParamMap.get('line'))),
-    switchMap(queryParamMap =>
-      this.packageService
+    switchMap(queryParamMap => {
+      if (!this.packageService.allowedHistoryType(queryParamMap.get('line'))) {
+        this.router.navigate(['dashboard']);
+        return of();
+      }
+
+      return this.packageService
         .handleRouter(queryParamMap.get('line'))
-        .pipe(this.packageService.mapLineChart(queryParamMap.get('line')))
-    )
+        .pipe(this.packageService.mapLineChart(queryParamMap.get('line')));
+    })
   );
 
-  constructor(private packageService: PackageService, private route: ActivatedRoute) {}
+  constructor(
+    private packageService: PackageService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 }
