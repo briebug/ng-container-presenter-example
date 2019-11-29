@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PackageService, ChartColors } from '../core/package.service';
 import { map } from 'rxjs/operators';
 import { Observable, combineLatest } from 'rxjs';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   packagesShipped$: Observable<LineGraphData> = this.packageService.shipped$.pipe(
     this.packageService.mapLineChart('Shipped', ChartColors.Teal)
   );
@@ -35,8 +35,6 @@ export class DashboardComponent implements OnInit {
   );
 
   constructor(private packageService: PackageService, private router: Router) {}
-
-  ngOnInit() {}
 
   titleClicked(type: string) {
     this.router.navigate(['package-history'], { queryParams: { line: type } });

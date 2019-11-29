@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PackageService, ChartColors } from 'src/app/core/package.service';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './packages-rushed.component.html',
   styleUrls: ['./packages-rushed.component.scss'],
 })
-export class PackagesRushedComponent implements OnInit {
+export class PackagesRushedComponent {
   data$ = this.dataService.rushed$.pipe(
     map(({ data, labels }) => ({
       labels,
@@ -23,6 +23,4 @@ export class PackagesRushedComponent implements OnInit {
   );
 
   constructor(private dataService: PackageService) {}
-
-  ngOnInit() {}
 }
