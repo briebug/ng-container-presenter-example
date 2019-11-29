@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./packages-shipped.component.scss'],
 })
 export class PackagesShippedComponent implements OnInit {
-  data = this.dataService.shipped$.pipe(
+  data$ = this.dataService.shipped$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./packages-rushed.component.scss'],
 })
 export class PackagesRushedComponent implements OnInit {
-  data = this.dataService.rushed$.pipe(
+  data$ = this.dataService.rushed$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [

@@ -8,7 +8,7 @@ import { ChartColors, PackageService } from 'src/app/core/package.service';
   styleUrls: ['./packages-returned.component.scss'],
 })
 export class PackagesReturnedComponent implements OnInit {
-  data = this.dataService.returned$.pipe(
+  data$ = this.dataService.returned$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [
