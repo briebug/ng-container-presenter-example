@@ -5,10 +5,10 @@
 
   app-line-graph {
     width: 100%;
-    border: 1px solid;
+    box-shadow: 0 0 5px 3px #0000001a;
     margin: 8px;
     padding: 10px;
-    box-sizing: border-box;
+    border-radius: 4px;
 
     @media screen and (min-width: 960px) {
       min-width: 400px;
