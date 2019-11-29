@@ -18,7 +18,7 @@ export interface DataLabels {
 })
 export class PackageService {
   labels = ['2016', '2017', '2018', '2019'];
-  randomNumber = (min = 500, max = 1500) => Math.random() * (max - min) + min;
+  randomNumber = (min = 500, max = 1000) => Math.random() * (max - min) + min;
   dataLabels$ = (data: number[]): Observable<DataLabels> =>
     of({ labels: this.labels, data }).pipe(delay(this.randomNumber()));
 
