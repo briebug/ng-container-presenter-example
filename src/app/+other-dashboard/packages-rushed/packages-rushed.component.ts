@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./packages-rushed.component.scss'],
 })
 export class PackagesRushedComponent {
-  data$ = this.dataService.rushed$.pipe(
+  data$ = this.packageService.rushed$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [
@@ -22,5 +22,5 @@ export class PackagesRushedComponent {
     }))
   );
 
-  constructor(private dataService: PackageService) {}
+  constructor(private packageService: PackageService) {}
 }

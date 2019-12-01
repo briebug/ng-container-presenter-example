@@ -8,7 +8,7 @@ import { ChartColors, PackageService } from 'src/app/core/package.service';
   styleUrls: ['./packages-returned.component.scss'],
 })
 export class PackagesReturnedComponent {
-  data$ = this.dataService.returned$.pipe(
+  data$ = this.packageService.returned$.pipe(
     map(({ data, labels }) => ({
       labels,
       datasets: [
@@ -22,5 +22,5 @@ export class PackagesReturnedComponent {
     }))
   );
 
-  constructor(private dataService: PackageService) {}
+  constructor(private packageService: PackageService) {}
 }
