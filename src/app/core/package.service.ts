@@ -26,12 +26,24 @@ export class PackageService {
     return this.dataLabels$([1000, 2000, 2450, 3200]);
   }
 
+  get shippedLineChart$() {
+    return this.shipped$.pipe(this.mapLineChart('Shipped', ChartColors.Teal));
+  }
+
   get returned$() {
     return this.dataLabels$([850, 700, 1200, 1700]);
   }
 
+  get returnedLineChart$() {
+    return this.returned$.pipe(this.mapLineChart('Returned', ChartColors.Blue));
+  }
+
   get rushed$() {
     return this.dataLabels$([600, 1200, 1300, 2400]);
+  }
+
+  get rushedLineChart$() {
+    return this.rushed$.pipe(this.mapLineChart('Rushed', ChartColors.Orange));
   }
 
   mapLineChart(label: string, borderColor = ChartColors.Blue) {

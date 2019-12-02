@@ -11,15 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  packagesShipped$: Observable<LineGraphData> = this.packageService.shipped$.pipe(
-    this.packageService.mapLineChart('Shipped', ChartColors.Teal)
-  );
-  packagesReturned$: Observable<LineGraphData> = this.packageService.returned$.pipe(
-    this.packageService.mapLineChart('Returned', ChartColors.Blue)
-  );
-  packagesRushed$: Observable<LineGraphData> = this.packageService.rushed$.pipe(
-    this.packageService.mapLineChart('Rushed', ChartColors.Orange)
-  );
+  packagesShipped$: Observable<LineGraphData> = this.packageService.shippedLineChart$;
+  packagesReturned$: Observable<LineGraphData> = this.packageService.returnedLineChart$;
+  packagesRushed$: Observable<LineGraphData> = this.packageService.rushedLineChart$;
 
   all$: Observable<LineGraphData> = combineLatest([
     this.packagesShipped$,
