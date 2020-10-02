@@ -1,8 +1,18 @@
 # ContainerPresenter
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start dev sever:
+
+```bash
+npm start
+```
 
 ## Code scaffolding
 
